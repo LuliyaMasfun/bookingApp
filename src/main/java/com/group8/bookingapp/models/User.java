@@ -3,23 +3,21 @@ package com.group8.bookingapp.models;
 public class User {
 
     private int userId;
-    private String name;
+    private String userName;
     private BookedMaterial bookedMaterial;
+
+    public User() {}
 
     public int getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getName() {
-        return name;
+        return userName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.userName = userName;
     }
 
     public BookedMaterial getBookedMaterial() {
@@ -34,7 +32,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
                 ", bookedMaterial=" + bookedMaterial +
                 '}';
     }
