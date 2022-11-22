@@ -1,12 +1,25 @@
 package com.group8.bookingapp.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class BookedMaterial {
-    private Material material;
-    private User user;
+    @Id
+    @GeneratedValue
     private int bookedMaterialId;
+    @Column
+    private Material material;
+    @Column
+    private User user;
+    @Column
+    private int bookedMaterialQuantity;
 
 
-    //GETTERS AND SETTER
+    public BookedMaterial() {};
+
     public Material getMaterial() {
         return material;
     }
@@ -27,8 +40,12 @@ public class BookedMaterial {
         return bookedMaterialId;
     }
 
-    public void setBookedMaterialId(int bookedMaterialId) {
-        this.bookedMaterialId = bookedMaterialId;
+    public int getBookedMaterialQuantity() {
+        return bookedMaterialQuantity;
+    }
+
+    public void setBookedMaterialQuantity(int bookedMaterialQuantity) {
+        this.bookedMaterialQuantity = bookedMaterialQuantity;
     }
 
     @Override
