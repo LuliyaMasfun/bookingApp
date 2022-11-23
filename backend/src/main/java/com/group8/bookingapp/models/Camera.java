@@ -1,11 +1,25 @@
 package com.group8.bookingapp.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="camera")
 public class Camera {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String model;
+    @Column
     private int pixel;
+    @Column
     private int weight;
+    @Column
     private String maker;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="bookedItems_id", nullable=true)
+    private BookedItems bookedItems;
 
 
     public Camera(String model, int pixel, int weight, String maker) {

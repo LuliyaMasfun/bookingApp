@@ -1,18 +1,30 @@
 package com.group8.bookingapp.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "bookedItems")
 public class BookedItems {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long userId;
-    private long cameraId;
-    private long soundId;
-    private long lightId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "camera_id", referencedColumnName = "id")
+    private Camera camera;
 
-    public BookedItems(long userId, long cameraId, long soundId, long lightId) {
-        this.userId = userId;
-        this.cameraId = cameraId;
-        this.soundId = soundId;
-        this.lightId = lightId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sound_id", referencedColumnName = "id")
+    private Sound sound;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "light_id", referencedColumnName = "id")
+    private Light light;
+
+    public BookedItems() {
     }
 
     public long getId() {
@@ -23,46 +35,46 @@ public class BookedItems {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public long getCameraId() {
-        return cameraId;
+    public Camera getCamera() {
+        return camera;
     }
 
-    public void setCameraId(long cameraId) {
-        this.cameraId = cameraId;
+    public void setCamera(Camera camera) {
+        this.camera = camera;
     }
 
-    public long getSoundId() {
-        return soundId;
+    public Sound getSound() {
+        return sound;
     }
 
-    public void setSoundId(long soundId) {
-        this.soundId = soundId;
+    public void setSound(Sound sound) {
+        this.sound = sound;
     }
 
-    public long getLightId() {
-        return lightId;
+    public Light getLight() {
+        return light;
     }
 
-    public void setLightId(long lightId) {
-        this.lightId = lightId;
+    public void setLight(Light light) {
+        this.light = light;
     }
 
     @Override
     public String toString() {
         return "BookedItems{" +
                 "id=" + id +
-                ", userId=" + userId +
-                ", cameraId=" + cameraId +
-                ", soundId=" + soundId +
-                ", lightId=" + lightId +
+                ", user=" + user +
+                ", camera=" + camera +
+                ", sound=" + sound +
+                ", light=" + light +
                 '}';
     }
 }

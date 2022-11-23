@@ -1,18 +1,29 @@
 package com.group8.bookingapp.models;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "booking")
 public class Booking {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private Date dateStart;
+    @Column
     private Date dateEnd;
-    private long bookedItemsId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bookedItems_id", referencedColumnName = "id")
+    private BookedItems bookedItems;
 
-    public Booking(Date dateStart, Date dateEnd, long bookedItemsId) {
+    @OneToOne(mappedBy = "booking")
+    private User user;
+
+    public Booking(Date dateStart, Date dateEnd, BookedItems bookedItems) {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.bookedItemsId = bookedItemsId;
+        this.bookedItems = bookedItems;
     }
 
 
@@ -40,12 +51,12 @@ public class Booking {
         this.dateEnd = dateEnd;
     }
 
-    public long getBookedItemsId() {
-        return bookedItemsId;
+    public BookedItems getBookedItems() {
+        return bookedItems;
     }
 
-    public void setBookedItemsId(long bookedItemsId) {
-        this.bookedItemsId = bookedItemsId;
+    public void setBookedItems(BookedItems bookedItems) {
+        this.bookedItems = bookedItems;
     }
 
     @Override
@@ -54,7 +65,7 @@ public class Booking {
                 "id=" + id +
                 ", dateStart=" + dateStart +
                 ", dateEnd=" + dateEnd +
-                ", bookedItemsId=" + bookedItemsId +
+                ", bookedItems=" + bookedItems +
                 '}';
     }
 }

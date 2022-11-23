@@ -1,39 +1,63 @@
 package com.group8.bookingapp.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
 
-    private int userId;
-    private String userName;
-    private BookedMaterial bookedMaterial;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "userHasBooking",
+            joinColumns =
+                    { @JoinColumn(name = "user_id", referencedColumnName = "id") },
+            inverseJoinColumns =
+                    { @JoinColumn(name = "booking_id", referencedColumnName = "id") })
+    private Booking booking;
 
-    public User() {}
 
-    public int getUserId() {
-        return userId;
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public String getName() {
-        return userName;
+    public long getId() {
+        return Id;
     }
 
-    public void setName(String name) {
-        this.userName = userName;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public BookedMaterial getBookedMaterial() {
-        return bookedMaterial;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setBookedMaterial(BookedMaterial bookedMaterial) {
-        this.bookedMaterial = bookedMaterial;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", bookedMaterial=" + bookedMaterial +
+                "Id=" + Id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

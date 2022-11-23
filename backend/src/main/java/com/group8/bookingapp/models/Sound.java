@@ -1,10 +1,22 @@
 package com.group8.bookingapp.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "sound")
 public class Sound {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column
     private String model;
+    @Column
     private int weight;
+    @Column
     private String maker;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="bookedItems_id", nullable=true)
+    private BookedItems bookedItems;
 
     public Sound(String model, int weight, String maker) {
         this.model = model;
