@@ -17,10 +17,9 @@ public class Camera {
     private int weight;
     @Column
     private String maker;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="bookedItems_id", nullable=true)
-    private BookedItems bookedItems;
 
+    public Camera() {
+    }
 
     public Camera(String model, int pixel, int weight, String maker) {
         this.model = model;
