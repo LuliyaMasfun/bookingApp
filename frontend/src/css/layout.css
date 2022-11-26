@@ -1,10 +1,6 @@
-.welcomeScreen {
-}
-
 #companyName {
   position: sticky;
   right: 180px;
-  top: 190px;
   font-size: 70px;
   font-weight: bold;
   width: 400px;
