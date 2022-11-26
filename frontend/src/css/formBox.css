@@ -1,0 +1,181 @@
+.formBox {
+  margin: 40px;
+  margin-top: 50px;
+}
+
+.accountExits {
+  color: #9f9f9f;
+  opacity: 0.7;
+  font-size: 15px;
+  font-style: thin;
+}
+
+.textColor {
+  color: #6548f8;
+  opacity: 1;
+}
+
+.welcomeText {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  right: 1px;
+}
+
+.smallTextUnderWelcomeText {
+  font-size: 12px;
+  font-weight: bold;
+  color: #9f9f9f;
+  opacity: 0.5;
+  position: relative;
+  top: -20px;
+}
+
+.smallTextAbove1 {
+  color: #6548f8;
+  font-size: 12px;
+  position: absolute;
+  top: 344px;
+  left: 190px;
+  background-color: white;
+  font-weight: 200;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.smallTextAbove2 {
+  color: #6548f8;
+  font-size: 12px;
+  position: absolute;
+  top: 419px;
+  left: 190px;
+  background-color: white;
+  font-weight: 200;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.smallTextAbove3 {
+  color: #6548f8;
+  font-size: 12px;
+  position: absolute;
+  top: 493px;
+  left: 190px;
+  background-color: white;
+  font-weight: 200;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.formInput {
+  display: none;
+}
+
+.fullNameForm {
+  height: 45px;
+  width: 300px;
+  border: 3px solid #6548f8;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 20px;
+  margin-left: -30px;
+}
+
+.fullNameForm.valid {
+  position: absolute;
+
+  /* background: url(/src/main/resources/static/images/valid.png); */
+}
+.fullNameForm.invalid {
+  position: absolute;
+
+  background-size: cover;
+  /* background: url(/src/main/resources/static/images/invalid.png); */
+}
+
+input[type="text"] {
+  padding-left: 14px;
+}
+
+input[type="password"] {
+  padding-left: 14px;
+}
+
+::placeholder {
+  font-weight: bold;
+}
+
+.formInput {
+  padding-top: 50px;
+}
+
+.submitButton {
+  height: 55px;
+  width: 322px;
+  border: 3px solid #6548f8;
+  border-radius: 5px;
+  margin-left: -30px;
+
+  background: #6548f8;
+  color: white;
+  font-weight: bold;
+}
+
+.submitButton:active {
+  background: darkblue;
+  outline: none;
+}
+
+.validNameImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 465px;
+  top: 310px;
+}
+
+.invalidNameImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 465px;
+  top: 310px;
+}
+
+.validPasswordImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 465px;
+  top: 456px;
+}
+
+.invalidPasswordImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 465px;
+  top: 456px;
+}
+
+.validEmailImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 465px;
+  top: 383px;
+}
+
+.invalidEmailImg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 465px;
+  top: 383px;
+}
+
+.succesfullLogin {
+  opacity: 1;
+  position: absolute;
+  left: 280px;
+  top: 200px;
+}
