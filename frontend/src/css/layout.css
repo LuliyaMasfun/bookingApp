@@ -19,3 +19,18 @@
   border-radius: 50%;
   overflow: hidden;
 }
+
+@media (max-width: 500px) {
+  html {
+    background-color: yellow;
+    flex-grow: 2;
+  }
+  body {
+    background-color: aqua;
+    height: 200vh;
+    flex-grow: 2;
+  }
+  .App {
+    background-color: yellow;
+  }
+}

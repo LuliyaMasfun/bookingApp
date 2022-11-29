@@ -1,10 +1,11 @@
 import "./App.css";
-import LoginPage from "./components/atom/LoginPage";
+
+import SignIn from "./components/molecule/SignIn";
 
 function App() {
   return (
     <div className="App">
-      <LoginPage />
+      <SignIn />
     </div>
   );
 }

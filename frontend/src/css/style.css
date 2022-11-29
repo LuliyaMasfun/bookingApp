@@ -2,12 +2,14 @@ html {
   height: 100vh;
   width: 100vh;
   box-sizing: border-box;
+  flex-grow: 2;
 }
 
 body {
   min-height: 100vh;
   min-width: 100vh;
   box-sizing: border-box;
+  flex-grow: 2;
 }
 
 .App {
@@ -15,6 +17,7 @@ body {
   min-width: 100vh;
   min-height: 100%;
   position: fixed;
+  flex-grow: 2;
 }
 
 .container {
@@ -24,8 +27,8 @@ body {
   position: fixed;
   margin-top: 50px;
 }
-
-@media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+/* /* 
+/* @media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
   body {
     display: grid;
 
@@ -47,8 +50,8 @@ body {
   .layout {
     text-align: none;
   }
-}
-.input_container {
+} */
+/* .input_container {
   width: 75%;
   display: flex;
   position: fixed;
@@ -100,4 +103,39 @@ body {
   opacity: 0.4;
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
+} */
+.container-SignIn {
+  position: relative;
+  width: 45vh;
+  height: 500px;
+  border: 5px solid black;
+  margin: 20px 50px;
 }
+.form {
+  background-color: aquamarine;
+  box-sizing: border-box;
+  border: 2px solid red;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-form input {
+  margin: 5px;
+  border: 5px solid black;
+}
+
+.form button {
+  border: 5px solid black;
+}
+
+/* .container-SignIn label {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  position: absolute;
+  left: 2px;
+  bottom: 5px;
+} */
