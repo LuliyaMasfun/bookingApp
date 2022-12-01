@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01ec065d-fc95-46d3-992a-475c0f5bc013" name="Default Changelist" comment="added DS_Store" />
+    <list default="true" id="01ec065d-fc95-46d3-992a-475c0f5bc013" name="Default Changelist" comment="added DS_Store">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecule/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/molecule/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/molecule/SignIn.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -35,6 +46,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669223108593</updated>
+      <workItem from="1669897094042" duration="239000" />
+      <workItem from="1669897362227" duration="46000" />
     </task>
     <task id="LOCAL−00001" summary="Added DS_Store to gitignore">
       <created>1669225047026</created>
@@ -62,6 +75,9 @@
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
