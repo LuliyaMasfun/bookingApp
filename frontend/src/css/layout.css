@@ -1,0 +1,25 @@
+.welcomeScreen {
+}
+
+#companyName {
+  position: sticky;
+  right: 180px;
+  top: 190px;
+  font-size: 70px;
+  font-weight: bold;
+  width: 400px;
+  color: black;
+  margin-left: 185px;
+  margin-top: 350px;
+}
+
+.dot {
+  position: absolute;
+  left: 800px;
+  top: 70px;
+  height: 100px;
+  width: 100px;
+  background-color: #bbb;
+  border-radius: 50%;
+  overflow: hidden;
+}
