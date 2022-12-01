@@ -22,6 +22,8 @@ public class User {
                     { @JoinColumn(name = "booking_id", referencedColumnName = "id") })
     private Booking booking;
 
+    public User() {
+    }
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;

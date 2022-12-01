@@ -24,6 +24,9 @@ public class Light {
         this.maker = maker;
     }
 
+    public Light() {
+    }
+
     public long getId() {
         return id;
     }
