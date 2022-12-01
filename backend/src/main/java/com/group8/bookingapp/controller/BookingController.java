@@ -1,5 +1,7 @@
 package com.group8.bookingapp.controller;
 import com.group8.bookingapp.models.Camera;
+import com.group8.bookingapp.models.Light;
+import com.group8.bookingapp.models.Sound;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +28,16 @@ public class BookingController {
     public List<Camera> getAllCameras(){
         return cameraRepo.findAll();
     }
+
+    @GetMapping(value = "/allLights")
+    public List<Light> getAllLights(){
+        return lightRepo.findAll();
+    }
+
+    @GetMapping(value = "/allSounds")
+    public List<Sound> getAllSounds(){
+        return soundRepo.findAll();
+    }
+
 
 }
