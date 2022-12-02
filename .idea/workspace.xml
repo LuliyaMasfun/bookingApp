@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01ec065d-fc95-46d3-992a-475c0f5bc013" name="Default Changelist" comment="added DS_Store" />
+    <list default="true" id="bf1118b9-e177-4b95-b26c-f74515628d9c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,58 +12,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2HxO7D4RF3xssyGNw5CR95CNLyl" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I43SGx23i1A2871tmMuAqHrGK1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/backend" />
-    </key>
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  }
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="01ec065d-fc95-46d3-992a-475c0f5bc013" name="Default Changelist" comment="" />
-      <created>1669223108593</created>
+      <changelist id="bf1118b9-e177-4b95-b26c-f74515628d9c" name="Changes" comment="" />
+      <created>1669427027905</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1669223108593</updated>
+      <updated>1669427027905</updated>
+      <workItem from="1669427030122" duration="809000" />
+      <workItem from="1669428248869" duration="1106000" />
     </task>
-    <task id="LOCAL−00001" summary="Added DS_Store to gitignore">
-      <created>1669225047026</created>
-      <option name="number" value="LOCAL−00001" />
-      <option name="presentableId" value="LOCAL−00001" />
-      <updated>1669225047026</updated>
-    </task>
-    <task id="LOCAL−00002" summary="Added another DS_Store to gitignore">
-      <created>1669225219791</created>
-      <option name="number" value="LOCAL−00002" />
-      <option name="presentableId" value="LOCAL−00002" />
-      <updated>1669225219791</updated>
-    </task>
-    <task id="LOCAL−00003" summary="remove">
-      <created>1669225581081</created>
-      <option name="number" value="LOCAL−00003" />
-      <option name="presentableId" value="LOCAL−00003" />
-      <updated>1669225581081</updated>
-    </task>
-    <task id="LOCAL−00004" summary="added DS_Store">
-      <created>1669225773696</created>
-      <option name="number" value="LOCAL−00004" />
-      <option name="presentableId" value="LOCAL−00004" />
-      <updated>1669225773696</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -73,12 +53,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added DS_Store to gitignore" />
-    <MESSAGE value="Added another DS_Store to gitignore" />
-    <MESSAGE value="remove" />
-    <MESSAGE value="added DS_Store" />
-    <option name="LAST_COMMIT_MESSAGE" value="added DS_Store" />
   </component>
 </project>

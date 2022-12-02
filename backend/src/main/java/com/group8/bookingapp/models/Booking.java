@@ -20,7 +20,12 @@ public class Booking {
     @OneToOne(mappedBy = "booking")
     private User user;
 
-    public Booking(String dateStart, String dateEnd, BookedItems bookedItems) {
+
+    public Booking() {
+    }
+
+    public Booking(Date dateStart, Date dateEnd, BookedItems bookedItems) {
+
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.bookedItems = bookedItems;

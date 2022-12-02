@@ -18,6 +18,9 @@ public class Sound {
     @JoinColumn(name="bookedItems_id", nullable=true)
     private BookedItems bookedItems;
 
+    public Sound() {
+    }
+
     public Sound(String model, int weight, String maker) {
         this.model = model;
         this.weight = weight;
