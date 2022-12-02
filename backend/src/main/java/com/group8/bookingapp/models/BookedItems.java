@@ -1,9 +1,15 @@
 package com.group8.bookingapp.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "bookedItems")
+@Getter
+@Setter
 public class BookedItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
