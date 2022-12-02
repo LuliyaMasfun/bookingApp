@@ -10,9 +10,9 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private Date dateStart;
+    private String dateStart;
     @Column
-    private Date dateEnd;
+    private String dateEnd;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bookedItems_id", referencedColumnName = "id")
     private BookedItems bookedItems;
@@ -20,10 +20,12 @@ public class Booking {
     @OneToOne(mappedBy = "booking")
     private User user;
 
+
     public Booking() {
     }
 
     public Booking(Date dateStart, Date dateEnd, BookedItems bookedItems) {
+
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.bookedItems = bookedItems;
@@ -38,19 +40,19 @@ public class Booking {
         this.id = id;
     }
 
-    public Date getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(String dateStart) {
         this.dateStart = dateStart;
     }
 
-    public Date getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 
