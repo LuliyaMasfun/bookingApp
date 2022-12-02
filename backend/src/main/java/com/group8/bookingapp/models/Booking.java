@@ -24,7 +24,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Date dateStart, Date dateEnd, BookedItems bookedItems) {
+    public Booking(String dateStart, String dateEnd, BookedItems bookedItems) {
 
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
