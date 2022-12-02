@@ -11,6 +11,13 @@ import java.util.List;
 @RestController
 public class BookingController {
 
+    private final BookingRepo bookingRepo;
+
+    @Autowired
+    public BookingController( BookingRepo bookingRepo){
+        this.bookingRepo= bookingRepo;
+    }
+
     @Autowired
     private CameraRepo cameraRepo;
     @Autowired
@@ -19,12 +26,14 @@ public class BookingController {
     private LightRepo lightRepo;
     @Autowired
     private BookedItemsRepo bookedItemsRepo;
-    @Autowired
-    private BookingRepo bookingRepo;
+
+
+
 
     @GetMapping(value = "/allCamera")
     public List<Camera> getAllCameras(){
         return cameraRepo.findAll();
+
     }
 
 }
