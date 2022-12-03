@@ -22,9 +22,6 @@ public class BookingController {
     @Autowired
     private BookingRepo bookingRepo;
 
-    @GetMapping(value = "/allCamera")
-    public List<Camera> getAllCameras(){
-        return cameraRepo.findAll();
-    }
+
 
 }
