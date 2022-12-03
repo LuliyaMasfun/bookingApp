@@ -35,7 +35,6 @@ public class UserController {
 
     @PostMapping(value = "/saveMaterial")
     public String saveBooking(@RequestBody Booking booking) {
-        
 
         bookingRepo.save(booking);
         return "Booking is saved";
