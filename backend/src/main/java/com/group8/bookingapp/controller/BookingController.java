@@ -24,20 +24,10 @@ public class BookingController {
     @Autowired
     private BookingRepo bookingRepo;
 
-    @GetMapping(value = "/allCamera")
-    public List<Camera> getAllCameras(){
-        return cameraRepo.findAll();
-    }
-
-    @GetMapping(value = "/allLights")
-    public List<Light> getAllLights(){
-        return lightRepo.findAll();
-    }
-
-    @GetMapping(value = "/allSounds")
-    public List<Sound> getAllSounds(){
-        return soundRepo.findAll();
-    }
+    // Funktioner för bookingController
+    //1. Reserva objekt med hjälp av id eller namn
+    //2. Ta bort reservation
+    //3. Ändra reservation
 
 
 }
