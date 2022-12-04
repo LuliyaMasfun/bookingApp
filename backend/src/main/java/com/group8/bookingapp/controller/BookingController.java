@@ -67,9 +67,12 @@ public class BookingController {
         bookedItems.setLight(light);
         bookedItems.setSound(sound);
 
-
         bookedItems.setDateStart(LocalDate.now());
-        bookedItems.setDateEnd(LocalDate.now().plusDays(bookedItems.getHowManyDaysToRent()));
+        int bookedDays = bookedItems.getHowManyDaysToRent();
+        if (bookedDays > 3) {
+        bookedItems.setHowManyDaysToRent(3);
+        }
+            bookedItems.setDateEnd(LocalDate.now().plusDays(bookedItems.getHowManyDaysToRent()));
 
         bookedItemsRepo.save(bookedItems);
         return "Item saved";

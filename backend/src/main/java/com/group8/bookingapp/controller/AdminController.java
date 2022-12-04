@@ -25,5 +25,4 @@ public class AdminController {
         cameraRepo.save(camera);
         return "Camera is saved";
     }
-
 }
