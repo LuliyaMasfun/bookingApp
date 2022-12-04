@@ -25,6 +25,8 @@ public class BookingController {
     private BookedItemsRepo bookedItemsRepo;
     @Autowired
     private BookingRepo bookingRepo;
+    @Autowired
+    private UserRepo userRepo;
 
     private final BookingService bookingService;
 
@@ -42,14 +44,13 @@ public class BookingController {
     //1. Reservera objekt med hjälp av id eller namn
     @PostMapping(value = "/add/booking")
     public String addBooking(@RequestBody Booking booking){
-        bookingService.addNewBooking( booking);
+        bookingService.addNewBooking(booking);
         return "Booking is saved";
     }
 
     //2. Ta bort reservation
    @DeleteMapping("/delete/booking/{bookingId}")
-    public String deleteBooking(
-            @PathVariable("bookingId") Long bookingId) {
+    public String deleteBooking(@PathVariable("bookingId") Long bookingId) {
         bookingService.deleteBooking(bookingId);
         return "Booking deleted";
     }
