@@ -1,4 +1,5 @@
 package com.group8.bookingapp.controller;
+import com.group8.bookingapp.models.BookedItems;
 import com.group8.bookingapp.models.Booking;
 import com.group8.bookingapp.repository.*;
 import com.group8.bookingapp.service.BookingService;
@@ -13,7 +14,8 @@ public class BookingController {
 
     @Autowired
     private BookingRepo bookingRepo;
-
+    @Autowired
+    private BookedItemsRepo bookedItemsRepo;
 
     private final BookingService bookingService;
 
@@ -27,6 +29,12 @@ public class BookingController {
         return bookingRepo.findAll();
     }
 
+    //booked items
+    @PostMapping(value = "/add/bookeditems")
+    public String addBooking(@RequestBody BookedItems bookedItems){
+        bookedItemsRepo.save(bookedItems);
+        return "Item saved";
+    }
 
     // Funktioner för bookingController
     //1. Reservera objekt med hjälp av id eller namn

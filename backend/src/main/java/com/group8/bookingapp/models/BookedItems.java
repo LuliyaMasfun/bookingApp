@@ -19,18 +19,25 @@ public class BookedItems {
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "camera_id", referencedColumnName = "id")
+    @JoinColumn(name = "camera_id", referencedColumnName = "id", nullable = true)
     private Camera camera;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "sound_id", referencedColumnName = "id")
+    @JoinColumn(name = "sound_id", referencedColumnName = "id", nullable = true)
     private Sound sound;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "light_id", referencedColumnName = "id")
+    @JoinColumn(name = "light_id", referencedColumnName = "id",nullable = true)
     private Light light;
 
     public BookedItems() {
+    }
+
+    public BookedItems(User user, Camera camera, Sound sound, Light light) {
+        this.user = user;
+        this.camera = camera;
+        this.sound = sound;
+        this.light = light;
     }
 
     public long getId() {
