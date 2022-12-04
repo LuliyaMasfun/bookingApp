@@ -64,20 +64,6 @@ public class BookingController {
     }
 
     //3. Ändra reservation
-    
-    @Autowired
-    private CameraRepo cameraRepo;
-    @Autowired
-    private SoundRepo soundRepo;
-    @Autowired
-    private LightRepo lightRepo;
-    @Autowired
-    private BookedItemsRepo bookedItemsRepo;
-    @Autowired
-    private BookingRepo bookingRepo;
-
-
-
 
     @PostMapping
     public String addBooking(@RequestBody BookedItems bookedItems){
