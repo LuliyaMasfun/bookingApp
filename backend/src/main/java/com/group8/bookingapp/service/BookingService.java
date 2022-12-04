@@ -1,5 +1,6 @@
 package com.group8.bookingapp.service;
 
+import com.group8.bookingapp.models.Booking;
 import com.group8.bookingapp.repository.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class BookingService {
             bookingRepo.deleteById(bookingId);
         }
 
+    }
+
+    public void addNewBooking( Booking booking){
+        bookingRepo.save(booking);
     }
 
 }

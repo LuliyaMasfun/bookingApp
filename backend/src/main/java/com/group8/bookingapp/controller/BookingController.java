@@ -12,14 +12,6 @@ import java.util.List;
 public class BookingController {
 
     @Autowired
-    private CameraRepo cameraRepo;
-    @Autowired
-    private SoundRepo soundRepo;
-    @Autowired
-    private LightRepo lightRepo;
-    @Autowired
-    private BookedItemsRepo bookedItemsRepo;
-    @Autowired
     private BookingRepo bookingRepo;
 
 
@@ -40,7 +32,7 @@ public class BookingController {
     //1. Reservera objekt med hjälp av id eller namn
     @PostMapping(value = "/add/booking")
     public String addBooking(@RequestBody Booking booking){
-        bookingRepo.save(booking);
+        bookingService.addNewBooking( booking);
         return "Booking is saved";
     }
 
