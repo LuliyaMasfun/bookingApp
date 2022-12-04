@@ -1,11 +1,16 @@
 package com.group8.bookingapp.controller;
 
 import com.group8.bookingapp.models.BookedItems;
+import com.group8.bookingapp.models.Booking;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AdminController {
@@ -29,18 +34,57 @@ public class AdminController {
 
     // BOOKED ITEMS
     @GetMapping( value = "/bookings")
-        public List<BookedItems> getAllBookedItems(){
-        return bookedItemsRepo.findAll();
+        public ResponseEntity<List<Booking>> getAllBookedItems(){
+
+        try {
+            if(!bookingRepo.findAll().isEmpty()){
+                return new ResponseEntity<>(bookingRepo.findAll(), HttpStatus.OK);
+            }
+            List<Booking> bookingList = new ArrayList<>();
+            bookingList.addAll(bookingRepo.findAll());
+
+           /* if (bookedItems == null) {
+                bookingList.addAll(bookingRepo.findAll());
+            } else {
+                bookingList.addAll(bookingRepo.findAll());
+            }*/
+
+            if (bookingList.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(bookingList, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+
+    }
+
+    @GetMapping(value = "bookings/{id}")
+    public ResponseEntity<Booking> getById(@PathVariable long id){
+
+         Optional <Booking> booking = bookingRepo.findById(id);
+         if(booking.isPresent()) {
+             return new ResponseEntity<>(booking.get(), HttpStatus.OK);
+         } else {
+             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+         }
     }
 
     @PostMapping(value ="/saveBookedItems")
-    public String saveBookedItems(@RequestBody BookedItems bookedItems){
-        bookedItemsRepo.save(bookedItems);
-        return "Booked Items has been saved...";
-    }
+    public ResponseEntity<BookedItems> saveBookedItems(@RequestBody BookedItems newItem) {
+        try {
+            BookedItems bookedItems = bookedItemsRepo.save(new BookedItems(newItem.getUser(), newItem.getCamera(), newItem.getSound(), newItem.getLight()));
 
+            return new ResponseEntity<>(bookedItems, HttpStatus.CREATED);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     @PutMapping(value = "/updateBookedItems/{id}")
-    public String updateBookedItems(@PathVariable ("id") long id, @RequestBody BookedItems bookedItems){
+    public String updateBookedItems(@PathVariable long id, @RequestBody BookedItems bookedItems){
         BookedItems updatedBookedItems = bookedItemsRepo.findById(bookedItems.getId());
         updatedBookedItems.setUser(bookedItems.getUser());
         updatedBookedItems.setCamera(bookedItems.getCamera());

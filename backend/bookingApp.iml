@@ -15,7 +15,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="bookingApp" />
+          <factory-entry name="bookingApp" value="a44ec6c7-5d98-40bf-a4f9-3d9783857843" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -24,7 +24,7 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -53,7 +53,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.23" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-metadata:1.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.2.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-ui:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.7.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.7.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.7.5" level="project" />

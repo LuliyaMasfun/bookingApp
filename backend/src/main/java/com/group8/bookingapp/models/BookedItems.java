@@ -27,6 +27,13 @@ public class BookedItems {
     public BookedItems() {
     }
 
+    public BookedItems(User user, Camera camera, Sound sound, Light light) {
+        this.user = user;
+        this.camera = camera;
+        this.sound = sound;
+        this.light = light;
+    }
+
     public long getId() {
         return id;
     }
