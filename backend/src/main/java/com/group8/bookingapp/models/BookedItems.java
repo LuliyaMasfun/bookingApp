@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Entity
@@ -29,6 +31,13 @@ public class BookedItems {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "light_id", referencedColumnName = "id",nullable = true)
     private Light light;
+
+    @Column
+    private LocalDate dateStart;
+    @Column
+    private LocalDate dateEnd;
+
+    private int howManyDaysToRent;
 
     public BookedItems() {
     }
