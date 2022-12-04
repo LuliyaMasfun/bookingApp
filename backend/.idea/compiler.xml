@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bookingApp" target="8" />
+      <module name="bookingApp" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
