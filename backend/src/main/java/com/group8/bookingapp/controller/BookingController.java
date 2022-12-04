@@ -1,19 +1,14 @@
 package com.group8.bookingapp.controller;
-
 import com.group8.bookingapp.models.*;
-
 import com.group8.bookingapp.models.BookedItems;
 import com.group8.bookingapp.models.Booking;
-
 import com.group8.bookingapp.repository.*;
 import com.group8.bookingapp.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
+
 
 
 @RestController
@@ -37,10 +32,6 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-
-
-    
- 
     @GetMapping(value = "/allBookings")
     public List<Booking> getAllBookings(){
         return bookingRepo.findAll();
