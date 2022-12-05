@@ -10,5 +10,5 @@ import java.util.List;
 public interface CameraRepo extends JpaRepository <Camera, Long> {
 
 
-    List<Camera> addCamera(Camera camera);
+
 }
