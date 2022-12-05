@@ -126,7 +126,7 @@ public class AdminController {
     public ResponseEntity<Long> deleteSound(@PathVariable long id){
         soundRepo.deleteById(id);
 
-        if (soundRepo.findById(id) == null){
+        if (soundRepo.findById(id).orElseThrow(null) ==null){
             return new ResponseEntity<>(id,HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(id,HttpStatus.OK);
