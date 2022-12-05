@@ -20,10 +20,9 @@ public class AdminController {
         return cameraRepo.findAll();
     }
 
-    @PostMapping(value = "/addCamera")
-    public List<Camera> addCamera(@RequestBody final Camera camera){
-        return cameraRepo.addCamera(camera);
+    @PostMapping(value = "/add/Camera")
+    public String addCamera(@RequestBody Camera camera){
+        cameraRepo.save(camera);
+        return "Camera is saved";
     }
-
-
 }
