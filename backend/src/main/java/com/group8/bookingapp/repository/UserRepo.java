@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface UserRepo extends JpaRepository <User, Long> {
 
-    @Query("SELECT a FROM User a WHERE a.lastName = ?1")
-    Boolean findUserByName(String lastname);
+    @Query("SELECT a FROM User a WHERE a.firstName = ?1")
+    String findUserByName(String lastname);
 }
