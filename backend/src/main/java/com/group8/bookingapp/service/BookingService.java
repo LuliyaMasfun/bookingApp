@@ -1,16 +1,11 @@
 package com.group8.bookingapp.service;
 
 import com.group8.bookingapp.models.BookedItems;
-import com.group8.bookingapp.models.Booking;
-import com.group8.bookingapp.models.Camera;
-import com.group8.bookingapp.models.User;
 import com.group8.bookingapp.repository.BookedItemsRepo;
-import com.group8.bookingapp.repository.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookingService {
@@ -32,11 +27,6 @@ public class BookingService {
 
     }
 
-  /*  public void findUserBooking(Long userId, BookedItems bookedItems){
-
-            bookedItemsRepo.findById(userId);
-
-    }*/
 
     public List<BookedItems> getBookings(){
         return bookedItemsRepo.findAll();

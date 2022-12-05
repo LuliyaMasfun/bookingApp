@@ -1,7 +1,6 @@
 package com.group8.bookingapp.controller;
 import com.group8.bookingapp.models.*;
 import com.group8.bookingapp.models.BookedItems;
-import com.group8.bookingapp.models.Booking;
 import com.group8.bookingapp.repository.*;
 import com.group8.bookingapp.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,17 +39,7 @@ public class BookingController {
         return bookingService.getBookings();
     }
 
-   /* @GetMapping(value = "booking/{userId")
-    public String findUserBooking(@PathVariable("userId") Long userId, @RequestBody BookedItems bookedItems){
-        bookingService.findUserBooking(userId, bookedItems);
-        return "Find user booking";
-    };*/
 
-    //booked items
-    // Funktioner för bookingController
-    //1. Reservera objekt med hjälp av id eller namn
-
-    //2. Ta bort reservation
 
 
    @DeleteMapping("/delete/booking/{bookingId}")
@@ -59,7 +48,7 @@ public class BookingController {
         return "Booking deleted";
     }
 
-    //3. Ändra reservation
+
 
     @PostMapping
     public String addBooking(@RequestBody BookedItems bookedItems){
