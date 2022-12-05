@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface LightRepo extends JpaRepository <Light, Long> {
 
     Light findById(long id);
+
 }

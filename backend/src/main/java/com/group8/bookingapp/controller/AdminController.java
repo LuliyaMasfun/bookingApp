@@ -130,26 +130,28 @@ public class AdminController {
         updatedLight.setModel(lightDetails.getModel());
         updatedLight.setMaker(lightDetails.getMaker());
 
-        lightRepo.save(lightDetails);
+        lightRepo.save(updatedLight);
 
         return new ResponseEntity<>(updatedLight,HttpStatus.OK);
-    }
-
-
-
-    @DeleteMapping(value = "camera/{id}")
-    public ResponseEntity<Long> deleteCamera(@PathVariable long id){
-         cameraRepo.deleteById(id);
-
-        return new ResponseEntity<>(id,HttpStatus.OK);
-
     }
 
     @DeleteMapping(value = "sound/{id}")
     public ResponseEntity<Long> deleteSound(@PathVariable long id){
         soundRepo.deleteById(id);
+
+        if (soundRepo.findById(id) == null){
+            return new ResponseEntity<>(id,HttpStatus.OK);
+        }
         return new ResponseEntity<>(id,HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "camera/{id}")
+    public ResponseEntity<Long> deleteCamera(@PathVariable long id){
+         cameraRepo.deleteById(id);
+        return new ResponseEntity<>(id,HttpStatus.OK);
+    }
+
+
 
     @DeleteMapping(value = "light/{id}")
     public ResponseEntity<Long> deleteLight(@PathVariable long id){
