@@ -13,9 +13,6 @@ public class Sound {
 
     @Column
     private String maker;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="bookedItems_id", nullable=true)
-    private BookedItems bookedItems;
 
     public Sound() {
     }

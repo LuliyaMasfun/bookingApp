@@ -12,9 +12,6 @@ public class Light {
     private String model;
     @Column
     private String maker;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="bookedItems_id", nullable=true)
-    private BookedItems bookedItems;
 
     public Light(String model, String maker) {
         this.model = model;
