@@ -1,5 +1,7 @@
 package com.group8.bookingapp.controller;
 
+import com.group8.bookingapp.models.BookedItems;
+import com.group8.bookingapp.models.Camera;
 import com.group8.bookingapp.models.*;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +15,58 @@ import java.util.List;
 @RestController
 public class AdminController {
 
-
+    @Autowired
     private final BookedItemsRepo bookedItemsRepo;
+    @Autowired
     private final CameraRepo cameraRepo;
+    @Autowired
     private final LightRepo lightRepo;
+    @Autowired
     private final SoundRepo soundRepo;
 
-    @Autowired
+
+    @GetMapping(value = "/allCamera")
+    public List<Camera> getAllCameras() {
+        return cameraRepo.findAll();
+    }
+
+    @PostMapping(value = "/add/Camera")
+    public String addCamera(@RequestBody Camera camera) {
+        cameraRepo.save(camera);
+        return "Camera is saved";
+    }
+
+    @GetMapping(value = "/findAllBookedItems")
+    public ResponseEntity<List<BookedItems>> findAllBookedItems() {
+        List<BookedItems> allItems = bookedItemsRepo.findAllBookedItems();
+        return new ResponseEntity<>(allItems, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/findSpecificBookedItem")
+    public List<Object> findSpecificBookedItem(@RequestBody Long id) {
+        BookedItems bookedItems = bookedItemsRepo.findById(id).orElseThrow(null);
+
+        String firstName = bookedItems.getUser().getFirstName();
+        String lastName = bookedItems.getUser().getFirstName();
+        String cameraBrand = bookedItems.getCamera().getCamera_brand();
+        String soundBrand = bookedItems.getSound().getSound_brand();
+        String lightBrand = bookedItems.getLight().getLight_brand();
+        int dateStart = bookedItems.getDateStart().getDayOfYear();
+        int dateEnd = bookedItems.getDateEnd().getDayOfYear();
+        int bookedDays = bookedItems.getHowManyDaysToRent();
+
+        List<Object> specificBooking = new ArrayList<>();
+        specificBooking.add(firstName);
+        specificBooking.add(lastName);
+        specificBooking.add(cameraBrand);
+        specificBooking.add(soundBrand);
+        specificBooking.add(lightBrand);
+        specificBooking.add(dateStart);
+        specificBooking.add(dateEnd);
+        specificBooking.add(bookedDays);
+
+        return specificBooking;
+    }
     public AdminController(BookedItemsRepo bookedItemsRepo, CameraRepo cameraRepo, LightRepo lightRepo, SoundRepo soundRepo) {
         this.bookedItemsRepo = bookedItemsRepo;
         this.cameraRepo = cameraRepo;
@@ -53,7 +100,7 @@ public class AdminController {
     @PostMapping(value ="/camera")
     public ResponseEntity<Camera> addBookedItems(@RequestBody Camera camera) {
         try {
-            Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getMaker()));
+            Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getCamera_brand()));
 
             return new ResponseEntity<>(savedCamera, HttpStatus.CREATED);
 
@@ -65,7 +112,7 @@ public class AdminController {
     @PostMapping(value ="/sound")
     public ResponseEntity<Sound> addSound(@RequestBody Sound sound) {
         try {
-            Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getMaker()));
+            Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getSound_brand()));
 
             return new ResponseEntity<>(savedSound, HttpStatus.CREATED);
 
@@ -78,7 +125,7 @@ public class AdminController {
     @PostMapping(value ="/light")
     public ResponseEntity<Light> addLight(@RequestBody Light light) {
         try {
-            Light savedLight = lightRepo.save(new Light(light.getModel(), light.getMaker()));
+            Light savedLight = lightRepo.save(new Light(light.getModel(), light.getLight_brand()));
 
             return new ResponseEntity<>(savedLight, HttpStatus.CREATED);
 
@@ -93,7 +140,7 @@ public class AdminController {
     public ResponseEntity<Camera> updateCamera(@PathVariable long id, @RequestBody Camera cameraDetails){
         Camera updatedCamera = cameraRepo.findById(id).orElseThrow(null);
         updatedCamera.setModel(cameraDetails.getModel());
-        updatedCamera.setMaker(cameraDetails.getMaker());
+        updatedCamera.setCamera_brand(cameraDetails.getCamera_brand());
 
         cameraRepo.save(updatedCamera);
 
@@ -104,7 +151,7 @@ public class AdminController {
     public ResponseEntity<Sound> updateSound(@PathVariable long id, @RequestBody Sound soundDetails){
         Sound updatedSound = soundRepo.findById(id).orElseThrow(null);
         updatedSound.setModel(soundDetails.getModel());
-        updatedSound.setMaker(soundDetails.getMaker());
+        updatedSound.setSound_brand(soundDetails.getSound_brand());
 
        soundRepo.save(updatedSound);
 
@@ -115,7 +162,7 @@ public class AdminController {
     public ResponseEntity<Light> updateLight(@PathVariable long id, @RequestBody Light lightDetails){
         Light updatedLight = lightRepo.findById(id).orElseThrow(null);
         updatedLight.setModel(lightDetails.getModel());
-        updatedLight.setMaker(lightDetails.getMaker());
+        updatedLight.setLight_brand(lightDetails.getLight_brand());
 
         lightRepo.save(updatedLight);
 

@@ -73,9 +73,11 @@ public class BookingController {
             bookedItems.setDateEnd(LocalDate.now().plusDays(bookedItems.getHowManyDaysToRent()));
 
         bookedItemsRepo.save(bookedItems);
-        return "Item saved";
+
+            return "Item saved";
     }
 
 
 
 }
+

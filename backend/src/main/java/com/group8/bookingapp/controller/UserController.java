@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping(value = "/allUser")
     public List<User> printAllUser(){
-       return userRepo.findAll();
+       return userRepo.findAllUsers();
     }
 
     @PostMapping(value = "/save/user")
