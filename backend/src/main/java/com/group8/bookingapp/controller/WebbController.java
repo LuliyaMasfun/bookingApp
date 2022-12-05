@@ -27,21 +27,32 @@ public class WebbController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping(value = "/allMaterial")
-    public ResponseEntity<Light> printAllLights(){
+    public ResponseEntity<Light> printAllLights() {
         try {
             return new ResponseEntity(lightRepo.findAll(), HttpStatus.FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping(value = "/allMaterial")
-    public ResponseEntity<Sound> printAllSound(){
-        return new ResponseEntity(soundRepo.findAll(), HttpStatus.FOUND);
+    public ResponseEntity<Sound> printAllSound() {
+        try {
+            return new ResponseEntity(soundRepo.findAll(), HttpStatus.FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping(value = "/allBookedItems")
-    public ResponseEntity<BookedItems> printAllBookedItems(){
-        return new ResponseEntity(bookedItemsRepo.findAll(), HttpStatus.FOUND);
+    public ResponseEntity<BookedItems> printAllBookedItems() {
+        try {
+            return new ResponseEntity(bookedItemsRepo.findAll(), HttpStatus.FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
 }
 
