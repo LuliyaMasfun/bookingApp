@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface CameraRepo extends JpaRepository <Camera, Long> {
 
+    Camera findById(long id);
 
 
 }
