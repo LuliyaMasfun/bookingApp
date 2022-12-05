@@ -11,12 +11,12 @@ public class Light {
     @Column
     private String model;
     @Column
-    private String maker;
+    private String light_brand;
 
 
-    public Light(String model, String maker) {
+    public Light(String model, String light_brand) {
         this.model = model;
-        this.maker = maker;
+        this.light_brand = light_brand;
     }
 
     public Light() {
@@ -38,12 +38,12 @@ public class Light {
         this.model = model;
     }
 
-    public String getMaker() {
-        return maker;
+    public String getLight_brand() {
+        return light_brand;
     }
 
-    public void setMaker(String maker) {
-        this.maker = maker;
+    public void setLight_brand(String light_brand) {
+        this.light_brand = light_brand;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Light {
         return "Light{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", maker='" + maker + '\'' +
+                ", light_brand='" + light_brand + '\'' +
                 '}';
     }
 }

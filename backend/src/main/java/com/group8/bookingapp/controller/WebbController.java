@@ -3,6 +3,8 @@ package com.group8.bookingapp.controller;
 import com.group8.bookingapp.models.*;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -18,21 +20,28 @@ public class WebbController {
     private BookedItemsRepo bookedItemsRepo;
 
     @GetMapping(value = "/allMaterial")
-    public List<Camera> printAllCameras(){
-        return cameraRepo.findAll();
+    public ResponseEntity<Camera> printAllCameras() {
+        try {
+            return new ResponseEntity(cameraRepo.findAll(), HttpStatus.FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @GetMapping(value = "/allMaterial")
-    public List<Light> printAllLights(){
-        return lightRepo.findAll();
+    public ResponseEntity<Light> printAllLights(){
+        try {
+            return new ResponseEntity(lightRepo.findAll(), HttpStatus.FOUND);
+        }
     }
     @GetMapping(value = "/allMaterial")
-    public List<Sound> printAllSound(){
-        return soundRepo.findAll();
+    public ResponseEntity<Sound> printAllSound(){
+        return new ResponseEntity(soundRepo.findAll(), HttpStatus.FOUND);
     }
 
     @GetMapping(value = "/allBookedItems")
-    public List<BookedItems> printAllBookedItems(){
-        return bookedItemsRepo.findAll();
+    public ResponseEntity<BookedItems> printAllBookedItems(){
+        return new ResponseEntity(bookedItemsRepo.findAll(), HttpStatus.FOUND);
     }
 
 }
+

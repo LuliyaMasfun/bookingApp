@@ -12,14 +12,14 @@ public class Camera {
     @Column
     private String model;
     @Column
-    private String maker;
+    private String camera_brand;
 
     public Camera() {
     }
 
-    public Camera(String model, String maker) {
+    public Camera(String model, String camera_brand) {
         this.model = model;
-        this.maker = maker;
+        this.camera_brand = camera_brand;
     }
 
     public long getId() {
@@ -38,12 +38,12 @@ public class Camera {
         this.model = model;
     }
 
-    public String getMaker() {
-        return maker;
+    public String getCamera_brand() {
+        return camera_brand;
     }
 
-    public void setMaker(String maker) {
-        this.maker = maker;
+    public void setCamera_brand(String camera_brand) {
+        this.camera_brand = camera_brand;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Camera {
         return "Camera{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", maker='" + maker + '\'' +
+                ", camera_brand='" + camera_brand + '\'' +
                 '}';
     }
 }
