@@ -1,44 +1,46 @@
 package com.group8.bookingapp.service;
 
+import com.group8.bookingapp.models.BookedItems;
 import com.group8.bookingapp.models.Booking;
+import com.group8.bookingapp.models.Camera;
+import com.group8.bookingapp.models.User;
+import com.group8.bookingapp.repository.BookedItemsRepo;
 import com.group8.bookingapp.repository.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookingService {
-    private final BookingRepo bookingRepo;
+    private final BookedItemsRepo bookedItemsRepo;
 
     @Autowired
-    public BookingService(BookingRepo bookingRepo) {
-        this.bookingRepo = bookingRepo;
+    public BookingService(BookedItemsRepo bookedItemsRepo) {
+        this.bookedItemsRepo = bookedItemsRepo;
     }
 
     public void deleteBooking(Long bookingId){
-        boolean exists = bookingRepo.existsById(bookingId);
+        boolean exists = bookedItemsRepo.existsById(bookingId);
 
         if (!exists){
             throw new IllegalStateException("There's no booking with id " + bookingId);
         }{
-            bookingRepo.deleteById(bookingId);
+            bookedItemsRepo.deleteById(bookingId);
         }
 
     }
 
-    public void findUserBooking(Long userId){
-        bookingRepo.findById(userId);
-    }
+  /*  public void findUserBooking(Long userId, BookedItems bookedItems){
 
-    public List<Booking> getBookings(){
-        return bookingRepo.findAll();
+            bookedItemsRepo.findById(userId);
+
+    }*/
+
+    public List<BookedItems> getBookings(){
+        return bookedItemsRepo.findAll();
     };
 
-    public void addNewBooking( Booking booking){
-        bookingRepo.save(booking);
-    }
 
 }

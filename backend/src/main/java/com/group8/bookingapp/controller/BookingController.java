@@ -35,24 +35,19 @@ public class BookingController {
     }
 
     @GetMapping(value = "/allBookings")
-    public List<Booking> getAllBookings(){
+    public List<BookedItems> getAllBookings(){
         return bookingService.getBookings();
     }
 
-    @GetMapping(value = "booking/{userId")
-    public String findUserBooking(@PathVariable("userId") Long userId){
-        bookingService.findUserBooking(userId);
+   /* @GetMapping(value = "booking/{userId")
+    public String findUserBooking(@PathVariable("userId") Long userId, @RequestBody BookedItems bookedItems){
+        bookingService.findUserBooking(userId, bookedItems);
         return "Find user booking";
-    };
+    };*/
 
     //booked items
     // Funktioner för bookingController
     //1. Reservera objekt med hjälp av id eller namn
-    @PostMapping(value = "/add/booking")
-    public String addBooking(@RequestBody Booking booking){
-        bookingService.addNewBooking(booking);
-        return "Booking is saved";
-    }
 
     //2. Ta bort reservation
    @DeleteMapping("/delete/booking/{bookingId}")
