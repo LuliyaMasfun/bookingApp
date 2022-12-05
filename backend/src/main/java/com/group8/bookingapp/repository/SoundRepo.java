@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SoundRepo extends JpaRepository <Sound, Long> {
+
+    Sound findById(long id);
 }

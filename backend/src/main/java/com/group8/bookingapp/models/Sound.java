@@ -10,8 +10,7 @@ public class Sound {
     private long id;
     @Column
     private String model;
-    @Column
-    private int weight;
+
     @Column
     private String maker;
     @OneToOne(cascade = CascadeType.ALL)
@@ -21,9 +20,9 @@ public class Sound {
     public Sound() {
     }
 
-    public Sound(String model, int weight, String maker) {
+    public Sound(String model, String maker) {
         this.model = model;
-        this.weight = weight;
+
         this.maker = maker;
     }
 
@@ -43,14 +42,6 @@ public class Sound {
         this.model = model;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
     public String getMaker() {
         return maker;
     }
@@ -64,7 +55,6 @@ public class Sound {
         return "Sound{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", weight=" + weight +
                 ", maker='" + maker + '\'' +
                 '}';
     }

@@ -11,16 +11,13 @@ public class Light {
     @Column
     private String model;
     @Column
-    private int weight;
-    @Column
     private String maker;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="bookedItems_id", nullable=true)
     private BookedItems bookedItems;
 
-    public Light(String model, int weight, String maker) {
+    public Light(String model, String maker) {
         this.model = model;
-        this.weight = weight;
         this.maker = maker;
     }
 
@@ -43,14 +40,6 @@ public class Light {
         this.model = model;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
     public String getMaker() {
         return maker;
     }
@@ -64,7 +53,6 @@ public class Light {
         return "Light{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", weight=" + weight +
                 ", maker='" + maker + '\'' +
                 '}';
     }

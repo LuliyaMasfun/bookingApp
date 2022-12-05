@@ -34,6 +34,9 @@ public class BookedItems {
         this.light = light;
     }
 
+    public BookedItems(String model, String maker) {
+    }
+
     public long getId() {
         return id;
     }

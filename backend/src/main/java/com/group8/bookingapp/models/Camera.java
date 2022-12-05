@@ -12,19 +12,13 @@ public class Camera {
     @Column
     private String model;
     @Column
-    private int pixel;
-    @Column
-    private int weight;
-    @Column
     private String maker;
 
     public Camera() {
     }
 
-    public Camera(String model, int pixel, int weight, String maker) {
+    public Camera(String model,String maker) {
         this.model = model;
-        this.pixel = pixel;
-        this.weight = weight;
         this.maker = maker;
     }
 
@@ -44,22 +38,6 @@ public class Camera {
         this.model = model;
     }
 
-    public int getPixel() {
-        return pixel;
-    }
-
-    public void setPixel(int pixel) {
-        this.pixel = pixel;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
     public String getMaker() {
         return maker;
     }
@@ -73,8 +51,6 @@ public class Camera {
         return "Camera{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", pixel=" + pixel +
-                ", weight=" + weight +
                 ", maker='" + maker + '\'' +
                 '}';
     }

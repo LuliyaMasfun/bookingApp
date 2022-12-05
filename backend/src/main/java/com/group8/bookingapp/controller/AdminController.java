@@ -1,7 +1,6 @@
 package com.group8.bookingapp.controller;
 
-import com.group8.bookingapp.models.BookedItems;
-import com.group8.bookingapp.models.Booking;
+import com.group8.bookingapp.models.*;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,26 +9,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class AdminController {
 
-    private final BookedItemsRepo bookedItemsRepo;
+
     private final BookingRepo bookingRepo;
     private final CameraRepo cameraRepo;
     private final LightRepo lightRepo;
     private final SoundRepo soundRepo;
-    private final UserRepo userRepo;
 
     @Autowired
-    public AdminController(BookedItemsRepo bookedItemsRepo, BookingRepo bookingRepo, CameraRepo cameraRepo, LightRepo lightRepo, SoundRepo soundRepo, UserRepo userRepo) {
-        this.bookedItemsRepo = bookedItemsRepo;
+    public AdminController(BookingRepo bookingRepo, CameraRepo cameraRepo, LightRepo lightRepo, SoundRepo soundRepo) {
         this.bookingRepo = bookingRepo;
         this.cameraRepo = cameraRepo;
         this.lightRepo = lightRepo;
         this.soundRepo = soundRepo;
-        this.userRepo = userRepo;
+
     }
 
     // BOOKED ITEMS
@@ -40,8 +36,7 @@ public class AdminController {
             if(!bookingRepo.findAll().isEmpty()){
                 return new ResponseEntity<>(bookingRepo.findAll(), HttpStatus.OK);
             }
-            List<Booking> bookingList = new ArrayList<>();
-            bookingList.addAll(bookingRepo.findAll());
+            List<Booking> bookingList = new ArrayList<>(bookingRepo.findAll());
 
            /* if (bookedItems == null) {
                 bookingList.addAll(bookingRepo.findAll());
@@ -61,45 +56,105 @@ public class AdminController {
 
     }
 
-    @GetMapping(value = "bookings/{id}")
+ /*   @GetMapping(value = "bookings/{id}")
     public ResponseEntity<Booking> getById(@PathVariable long id){
 
-         Optional <Booking> booking = bookingRepo.findById(id);
-         if(booking.isPresent()) {
-             return new ResponseEntity<>(booking.get(), HttpStatus.OK);
-         } else {
-             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-         }
+         Booking newBooking = bookingRepo.findById(id);
+        return booking.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
     }
+*/
 
-    @PostMapping(value ="/saveBookedItems")
-    public ResponseEntity<BookedItems> saveBookedItems(@RequestBody BookedItems newItem) {
+    @PostMapping(value ="/camera")
+    public ResponseEntity<Camera> saveBookedItems(@RequestBody Camera camera) {
         try {
-            BookedItems bookedItems = bookedItemsRepo.save(new BookedItems(newItem.getUser(), newItem.getCamera(), newItem.getSound(), newItem.getLight()));
+            Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getMaker()));
 
-            return new ResponseEntity<>(bookedItems, HttpStatus.CREATED);
+            return new ResponseEntity<>(savedCamera, HttpStatus.CREATED);
 
         } catch (Exception e){
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping(value = "/updateBookedItems/{id}")
-    public String updateBookedItems(@PathVariable long id, @RequestBody BookedItems bookedItems){
-        BookedItems updatedBookedItems = bookedItemsRepo.findById(bookedItems.getId());
-        updatedBookedItems.setUser(bookedItems.getUser());
-        updatedBookedItems.setCamera(bookedItems.getCamera());
-        updatedBookedItems.setLight(bookedItems.getLight());
-        updatedBookedItems.setSound(bookedItems.getSound());
 
-        return "Booked item has been updated by id" + id;
+    @PostMapping(value ="/sound")
+    public ResponseEntity<Sound> saveSound(@RequestBody Sound sound) {
+        try {
+            Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getMaker()));
+
+            return new ResponseEntity<>(savedSound, HttpStatus.CREATED);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @DeleteMapping(value = "/deleteBookedItems/{id}")
-    public String deleteBookedItem(@PathVariable ("id")long id,@RequestBody BookedItems bookedItems){
-        BookedItems deletedBookedItem = bookedItemsRepo.deleteBookedItemsById(bookedItems.getId());
+    @PostMapping(value ="/light")
+    public ResponseEntity<Light> saveSound(@RequestBody Light light) {
+        try {
+            Light savedLight = lightRepo.save(new Light(light.getModel(), light.getMaker()));
 
-        return "Booked item has been deleted by id" + id;
+            return new ResponseEntity<>(savedLight, HttpStatus.CREATED);
 
+        } catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    @PutMapping(value = "camera/{id}")
+    public ResponseEntity<Camera> updateCamera(@PathVariable long id, @RequestBody Camera cameraDetails){
+        Camera updatedCamera = cameraRepo.findById(id);
+        updatedCamera.setModel(cameraDetails.getModel());
+        updatedCamera.setMaker(cameraDetails.getMaker());
+
+        cameraRepo.save(updatedCamera);
+
+        return new ResponseEntity<>(updatedCamera,HttpStatus.OK);
+    }
+
+    @PutMapping(value = "sound/{id}")
+    public ResponseEntity<Sound> updateSound(@PathVariable long id, @RequestBody Sound soundDetails){
+        Sound updatedSound = soundRepo.findById(id);
+        updatedSound.setModel(soundDetails.getModel());
+        updatedSound.setMaker(soundDetails.getMaker());
+
+       soundRepo.save(updatedSound);
+
+        return new ResponseEntity<>(updatedSound,HttpStatus.OK);
+    }
+
+    @PutMapping(value = "light/{id}")
+    public ResponseEntity<Light> updateLight(@PathVariable long id, @RequestBody Light lightDetails){
+        Light updatedLight = lightRepo.findById(id);
+        updatedLight.setModel(lightDetails.getModel());
+        updatedLight.setMaker(lightDetails.getMaker());
+
+        lightRepo.save(lightDetails);
+
+        return new ResponseEntity<>(updatedLight,HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping(value = "camera/{id}")
+    public ResponseEntity<Long> deleteCamera(@PathVariable long id){
+         cameraRepo.deleteById(id);
+
+        return new ResponseEntity<>(id,HttpStatus.OK);
+
+    }
+
+    @DeleteMapping(value = "sound/{id}")
+    public ResponseEntity<Long> deleteSound(@PathVariable long id){
+        soundRepo.deleteById(id);
+        return new ResponseEntity<>(id,HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "light/{id}")
+    public ResponseEntity<Long> deleteLight(@PathVariable long id){
+        lightRepo.deleteById(id);
+        return new ResponseEntity<>(id,HttpStatus.OK);
 
     }
 }
