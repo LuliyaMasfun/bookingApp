@@ -5,6 +5,8 @@ import com.group8.bookingapp.models.Booking;
 import com.group8.bookingapp.repository.*;
 import com.group8.bookingapp.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -75,8 +77,10 @@ public class BookingController {
             bookedItems.setDateEnd(LocalDate.now().plusDays(bookedItems.getHowManyDaysToRent()));
 
         bookedItemsRepo.save(bookedItems);
-        return "Item saved";
+
+            return "Item saved";
     }
 
 
 }
+

@@ -16,6 +16,5 @@ public interface BookedItemsRepo extends JpaRepository<BookedItems, Long> {
            +             "LEFT OUTER JOIN sound AS d ON a.sound_id=d.id"
            + "ORDER BY a.id ASC",
             nativeQuery = true)
-
-    List<BookedItems> findAllBookedItems(BookedItems bookedItems);
+        List<BookedItems>findAllBookedItems();
 }
