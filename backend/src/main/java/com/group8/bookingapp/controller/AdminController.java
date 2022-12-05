@@ -62,6 +62,7 @@ public class AdminController {
         }
     }
 
+
     @PostMapping(value ="/light")
     public ResponseEntity<Light> saveSound(@RequestBody Light light) {
         try {
@@ -133,4 +134,5 @@ public class AdminController {
         return new ResponseEntity<>(id,HttpStatus.OK);
 
     }
+
 }
