@@ -91,7 +91,7 @@ public class AdminController {
 
     @PutMapping(value = "camera/{id}")
     public ResponseEntity<Camera> updateCamera(@PathVariable long id, @RequestBody Camera cameraDetails){
-        Camera updatedCamera = cameraRepo.findById(id);
+        Camera updatedCamera = cameraRepo.findById(id).orElseThrow(null);
         updatedCamera.setModel(cameraDetails.getModel());
         updatedCamera.setMaker(cameraDetails.getMaker());
 
@@ -102,7 +102,7 @@ public class AdminController {
 
     @PutMapping(value = "sound/{id}")
     public ResponseEntity<Sound> updateSound(@PathVariable long id, @RequestBody Sound soundDetails){
-        Sound updatedSound = soundRepo.findById(id);
+        Sound updatedSound = soundRepo.findById(id).orElseThrow(null);
         updatedSound.setModel(soundDetails.getModel());
         updatedSound.setMaker(soundDetails.getMaker());
 
@@ -113,7 +113,7 @@ public class AdminController {
 
     @PutMapping(value = "light/{id}")
     public ResponseEntity<Light> updateLight(@PathVariable long id, @RequestBody Light lightDetails){
-        Light updatedLight = lightRepo.findById(id);
+        Light updatedLight = lightRepo.findById(id).orElseThrow(null);
         updatedLight.setModel(lightDetails.getModel());
         updatedLight.setMaker(lightDetails.getMaker());
 
@@ -127,7 +127,7 @@ public class AdminController {
         soundRepo.deleteById(id);
 
         if (soundRepo.findById(id) == null){
-            return new ResponseEntity<>(id,HttpStatus.OK);
+            return new ResponseEntity<>(id,HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(id,HttpStatus.OK);
     }

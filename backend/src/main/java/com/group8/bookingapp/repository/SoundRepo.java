@@ -8,7 +8,6 @@ package com.group8.bookingapp.repository;
 @Repository
 public interface SoundRepo extends JpaRepository <Sound, Long> {
 
-    Sound findById(long id);
 
 }
 

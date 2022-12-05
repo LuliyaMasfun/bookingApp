@@ -4,6 +4,8 @@ import com.group8.bookingapp.models.BookedItems;
 import com.group8.bookingapp.repository.*;
 import com.group8.bookingapp.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -52,9 +54,12 @@ public class BookingController {
 
     @PostMapping
     public String addBooking(@RequestBody BookedItems bookedItems){
-        Camera camera = cameraRepo.findById(bookedItems.getCamera().getId()).orElseThrow(null);
-        Light light = lightRepo.findById(bookedItems.getLight().getId()).orElseThrow(null);
-        Sound sound = soundRepo.findById(bookedItems.getSound().getId()).orElseThrow(null);
+
+            Camera camera = cameraRepo.findById(bookedItems.getCamera().getId()).orElseThrow(null);
+            Light light = lightRepo.findById(bookedItems.getLight().getId()).orElseThrow(null);
+            Sound sound = soundRepo.findById(bookedItems.getSound().getId()).orElseThrow(null);
+
+
 
         bookedItems.setCamera(camera);
         bookedItems.setLight(light);
