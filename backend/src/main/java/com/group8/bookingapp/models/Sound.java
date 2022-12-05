@@ -10,15 +10,16 @@ public class Sound {
     private long id;
     @Column
     private String model;
+
     @Column
     private String maker;
-
 
     public Sound() {
     }
 
     public Sound(String model, String maker) {
         this.model = model;
+
         this.maker = maker;
     }
 
