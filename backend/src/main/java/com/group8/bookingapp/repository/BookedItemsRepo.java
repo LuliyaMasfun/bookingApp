@@ -1,9 +1,12 @@
 package com.group8.bookingapp.repository;
 
 import com.group8.bookingapp.models.BookedItems;
+import com.group8.bookingapp.models.Camera;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+
 import java.util.List;
 
 @Repository
@@ -17,4 +20,6 @@ public interface BookedItemsRepo extends JpaRepository<BookedItems, Long> {
            + "ORDER BY a.id ASC",
             nativeQuery = true)
         List<BookedItems>findAllBookedItems();
+
+
 }

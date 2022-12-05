@@ -10,9 +10,9 @@ public class Sound {
     private long id;
     @Column
     private String model;
+
     @Column
     private String sound_brand;
-
 
     public Sound() {
     }

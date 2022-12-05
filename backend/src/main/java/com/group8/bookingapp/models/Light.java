@@ -13,7 +13,6 @@ public class Light {
     @Column
     private String light_brand;
 
-
     public Light(String model, String light_brand) {
         this.model = model;
         this.light_brand = light_brand;

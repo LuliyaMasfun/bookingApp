@@ -2,6 +2,7 @@ package com.group8.bookingapp.controller;
 
 import com.group8.bookingapp.models.BookedItems;
 import com.group8.bookingapp.models.Camera;
+import com.group8.bookingapp.models.*;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,14 +12,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @RestController
 public class AdminController {
 
     @Autowired
-    private CameraRepo cameraRepo;
+    private final BookedItemsRepo bookedItemsRepo;
     @Autowired
-    private BookedItemsRepo bookedItemsRepo;
+    private final CameraRepo cameraRepo;
+    @Autowired
+    private final LightRepo lightRepo;
+    @Autowired
+    private final SoundRepo soundRepo;
 
 
     @GetMapping(value = "/allCamera")
@@ -62,6 +66,132 @@ public class AdminController {
         specificBooking.add(bookedDays);
 
         return specificBooking;
+    }
+    public AdminController(BookedItemsRepo bookedItemsRepo, CameraRepo cameraRepo, LightRepo lightRepo, SoundRepo soundRepo) {
+        this.bookedItemsRepo = bookedItemsRepo;
+        this.cameraRepo = cameraRepo;
+        this.lightRepo = lightRepo;
+        this.soundRepo = soundRepo;
+
+    }
+
+    // BOOKED ITEMS
+    @GetMapping( value = "/bookedItems")
+        public ResponseEntity<List<BookedItems>> getAllBookedItems(){
+
+        try {
+            List<BookedItems> bookedItemsList = new ArrayList<>(bookedItemsRepo.findAll());
+            if(!bookedItemsRepo.findAll().isEmpty()){
+
+                return new ResponseEntity<>(bookedItemsList,HttpStatus.OK);
+            }
+
+            if (bookedItemsList.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(bookedItemsList, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+    }
+
+    @PostMapping(value ="/camera")
+    public ResponseEntity<Camera> addBookedItems(@RequestBody Camera camera) {
+        try {
+            Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getCamera_brand()));
+
+            return new ResponseEntity<>(savedCamera, HttpStatus.CREATED);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping(value ="/sound")
+    public ResponseEntity<Sound> addSound(@RequestBody Sound sound) {
+        try {
+            Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getSound_brand()));
+
+            return new ResponseEntity<>(savedSound, HttpStatus.CREATED);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @PostMapping(value ="/light")
+    public ResponseEntity<Light> addLight(@RequestBody Light light) {
+        try {
+            Light savedLight = lightRepo.save(new Light(light.getModel(), light.getLight_brand()));
+
+            return new ResponseEntity<>(savedLight, HttpStatus.CREATED);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    @PutMapping(value = "camera/{id}")
+    public ResponseEntity<Camera> updateCamera(@PathVariable long id, @RequestBody Camera cameraDetails){
+        Camera updatedCamera = cameraRepo.findById(id).orElseThrow(null);
+        updatedCamera.setModel(cameraDetails.getModel());
+        updatedCamera.setCamera_brand(cameraDetails.getCamera_brand());
+
+        cameraRepo.save(updatedCamera);
+
+        return new ResponseEntity<>(updatedCamera,HttpStatus.OK);
+    }
+
+    @PutMapping(value = "sound/{id}")
+    public ResponseEntity<Sound> updateSound(@PathVariable long id, @RequestBody Sound soundDetails){
+        Sound updatedSound = soundRepo.findById(id).orElseThrow(null);
+        updatedSound.setModel(soundDetails.getModel());
+        updatedSound.setSound_brand(soundDetails.getSound_brand());
+
+       soundRepo.save(updatedSound);
+
+        return new ResponseEntity<>(updatedSound,HttpStatus.OK);
+    }
+
+    @PutMapping(value = "light/{id}")
+    public ResponseEntity<Light> updateLight(@PathVariable long id, @RequestBody Light lightDetails){
+        Light updatedLight = lightRepo.findById(id).orElseThrow(null);
+        updatedLight.setModel(lightDetails.getModel());
+        updatedLight.setLight_brand(lightDetails.getLight_brand());
+
+        lightRepo.save(updatedLight);
+
+        return new ResponseEntity<>(updatedLight,HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "sound/{id}")
+    public ResponseEntity<Long> deleteSound(@PathVariable long id){
+        soundRepo.deleteById(id);
+
+        if (soundRepo.findById(id).orElseThrow(null) ==null){
+            return new ResponseEntity<>(id,HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(id,HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "camera/{id}")
+    public ResponseEntity<Long> deleteCamera(@PathVariable long id){
+         cameraRepo.deleteById(id);
+        return new ResponseEntity<>(id,HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping(value = "light/{id}")
+    public ResponseEntity<Long> deleteLight(@PathVariable long id){
+        lightRepo.deleteById(id);
+        return new ResponseEntity<>(id,HttpStatus.OK);
+
     }
 
 }
