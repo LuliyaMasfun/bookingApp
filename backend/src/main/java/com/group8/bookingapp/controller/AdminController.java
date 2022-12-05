@@ -14,14 +14,14 @@ import java.util.List;
 public class AdminController {
 
 
-    private final BookingRepo bookingRepo;
+    private final BookedItemsRepo bookedItemsRepo;
     private final CameraRepo cameraRepo;
     private final LightRepo lightRepo;
     private final SoundRepo soundRepo;
 
     @Autowired
-    public AdminController(BookingRepo bookingRepo, CameraRepo cameraRepo, LightRepo lightRepo, SoundRepo soundRepo) {
-        this.bookingRepo = bookingRepo;
+    public AdminController(BookedItemsRepo bookedItemsRepo, CameraRepo cameraRepo, LightRepo lightRepo, SoundRepo soundRepo) {
+        this.bookedItemsRepo = bookedItemsRepo;
         this.cameraRepo = cameraRepo;
         this.lightRepo = lightRepo;
         this.soundRepo = soundRepo;
@@ -29,40 +29,26 @@ public class AdminController {
     }
 
     // BOOKED ITEMS
-    @GetMapping( value = "/bookings")
-        public ResponseEntity<List<Booking>> getAllBookedItems(){
+    @GetMapping( value = "/bookedItems")
+        public ResponseEntity<List<BookedItems>> getAllBookedItems(){
 
         try {
-            if(!bookingRepo.findAll().isEmpty()){
-                return new ResponseEntity<>(bookingRepo.findAll(), HttpStatus.OK);
+            List<BookedItems> bookedItemsList = new ArrayList<>(bookedItemsRepo.findAll());
+            if(!bookedItemsRepo.findAll().isEmpty()){
+
+                return new ResponseEntity<>(bookedItemsList,HttpStatus.OK);
             }
-            List<Booking> bookingList = new ArrayList<>(bookingRepo.findAll());
 
-           /* if (bookedItems == null) {
-                bookingList.addAll(bookingRepo.findAll());
-            } else {
-                bookingList.addAll(bookingRepo.findAll());
-            }*/
-
-            if (bookingList.isEmpty()) {
+            if (bookedItemsList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            return new ResponseEntity<>(bookingList, HttpStatus.OK);
+            return new ResponseEntity<>(bookedItemsList, HttpStatus.OK);
         }
-        catch (Exception e){
+        catch (Exception e) {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
-
     }
-
- /*   @GetMapping(value = "bookings/{id}")
-    public ResponseEntity<Booking> getById(@PathVariable long id){
-
-         Booking newBooking = bookingRepo.findById(id);
-        return booking.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
-    }
-*/
 
     @PostMapping(value ="/camera")
     public ResponseEntity<Camera> saveBookedItems(@RequestBody Camera camera) {

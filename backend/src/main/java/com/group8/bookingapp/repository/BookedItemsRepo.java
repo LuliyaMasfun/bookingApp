@@ -12,9 +12,5 @@ import java.util.List;
 public interface BookedItemsRepo extends JpaRepository<BookedItems, Long> {
 
 
-     //public List<BookedItems>findById(long id);
-
-     BookedItems findById(long id);
-     BookedItems deleteBookedItemsById(long id);
 
 }
