@@ -13,9 +13,8 @@ public class Light {
     @Column
     private String maker;
 
-    public Light(String model, int weight, String maker) {
+    public Light(String model, String maker) {
         this.model = model;
-        this.weight = weight;
         this.maker = maker;
     }
 

@@ -3,8 +3,12 @@ package com.group8.bookingapp.controller;
 import com.group8.bookingapp.models.*;
 import com.group8.bookingapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class AdminController {
@@ -41,14 +45,13 @@ public class AdminController {
             return new ResponseEntity<>(bookedItemsList, HttpStatus.OK);
         }
         catch (Exception e) {
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-    ;
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
     }
 
     @PostMapping(value ="/camera")
-    public ResponseEntity<Camera> saveBookedItems(@RequestBody Camera camera) {
+    public ResponseEntity<Camera> addBookedItems(@RequestBody Camera camera) {
         try {
             Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getMaker()));
 
@@ -60,7 +63,7 @@ public class AdminController {
     }
 
     @PostMapping(value ="/sound")
-    public ResponseEntity<Sound> saveSound(@RequestBody Sound sound) {
+    public ResponseEntity<Sound> addSound(@RequestBody Sound sound) {
         try {
             Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getMaker()));
 
@@ -73,7 +76,7 @@ public class AdminController {
 
 
     @PostMapping(value ="/light")
-    public ResponseEntity<Light> saveSound(@RequestBody Light light) {
+    public ResponseEntity<Light> addLight(@RequestBody Light light) {
         try {
             Light savedLight = lightRepo.save(new Light(light.getModel(), light.getMaker()));
 
