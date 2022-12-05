@@ -4,12 +4,9 @@ import com.group8.bookingapp.models.Booking;
 import com.group8.bookingapp.models.User;
 import com.group8.bookingapp.repository.BookingRepo;
 import com.group8.bookingapp.repository.UserRepo;
+import com.group8.bookingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,14 @@ public class UserController {
     private UserRepo userRepo;
     @Autowired
     private BookingRepo bookingRepo;
+
+    private final UserService userService;
+
+
+   @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(value = "/allUser")
     public List<User> printAllUser(){
@@ -40,8 +45,15 @@ public class UserController {
         bookingRepo.save(booking);
         return "Booking is saved";
 
-    }
+   }
 
+   @PutMapping (value = "/updateUser/{userId}")
+    public void updateUser(
+            @PathVariable ("userId") Long userId,
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName) {
+       userService.updateUser(userId, firstName, lastName);
+   }
 
 
 }

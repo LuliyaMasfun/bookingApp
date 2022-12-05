@@ -30,6 +30,7 @@ public class BookingController {
 
     private final BookingService bookingService;
 
+    @Autowired
     public BookingController(BookingService bookingService) {
         this.bookingService = bookingService;
     }
@@ -50,6 +51,8 @@ public class BookingController {
     //1. Reservera objekt med hjälp av id eller namn
 
     //2. Ta bort reservation
+
+
    @DeleteMapping("/delete/booking/{bookingId}")
     public String deleteBooking(@PathVariable("bookingId") Long bookingId) {
         bookingService.deleteBooking(bookingId);
