@@ -11,11 +11,11 @@ public class Light {
     @Column
     private String model;
     @Column
-    private String light_brand;
+    private String brand;
 
-    public Light(String model, String light_brand) {
+    public Light(String model, String brand) {
         this.model = model;
-        this.light_brand = light_brand;
+        this.brand = brand;
     }
 
     public Light() {
@@ -37,12 +37,12 @@ public class Light {
         this.model = model;
     }
 
-    public String getLight_brand() {
-        return light_brand;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setLight_brand(String light_brand) {
-        this.light_brand = light_brand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Light {
         return "Light{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", light_brand='" + light_brand + '\'' +
+                ", brand='" + brand + '\'' +
                 '}';
     }
 }

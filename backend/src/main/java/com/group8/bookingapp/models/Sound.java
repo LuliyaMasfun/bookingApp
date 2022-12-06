@@ -12,14 +12,14 @@ public class Sound {
     private String model;
 
     @Column
-    private String sound_brand;
+    private String brand;
 
     public Sound() {
     }
 
-    public Sound(String model, String sound_brand) {
+    public Sound(String model, String brand) {
         this.model = model;
-        this.sound_brand = sound_brand;
+        this.brand = brand;
     }
 
     public Long getId() {
@@ -38,12 +38,12 @@ public class Sound {
         this.model = model;
     }
 
-    public String getSound_brand() {
-        return sound_brand;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setSound_brand(String sound_brand) {
-        this.sound_brand = sound_brand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Sound {
         return "Sound{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
-                ", sound_brand='" + sound_brand + '\'' +
+                ", brand='" + brand + '\'' +
                 '}';
     }
 }

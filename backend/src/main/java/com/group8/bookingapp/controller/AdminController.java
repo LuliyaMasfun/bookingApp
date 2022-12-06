@@ -48,9 +48,9 @@ public class AdminController {
 
         String firstName = bookedItems.getUser().getFirstName();
         String lastName = bookedItems.getUser().getFirstName();
-        String cameraBrand = bookedItems.getCamera().getCamera_brand();
-        String soundBrand = bookedItems.getSound().getSound_brand();
-        String lightBrand = bookedItems.getLight().getLight_brand();
+        String cameraBrand = bookedItems.getCamera().getBrand();
+        String soundBrand = bookedItems.getSound().getBrand();
+        String lightBrand = bookedItems.getLight().getBrand();
         int dateStart = bookedItems.getDateStart().getDayOfYear();
         int dateEnd = bookedItems.getDateEnd().getDayOfYear();
         int bookedDays = bookedItems.getHowManyDaysToRent();
@@ -100,7 +100,7 @@ public class AdminController {
     @PostMapping(value ="/camera")
     public ResponseEntity<Camera> addBookedItems(@RequestBody Camera camera) {
         try {
-            Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getCamera_brand()));
+            Camera savedCamera = cameraRepo.save(new Camera(camera.getModel(), camera.getBrand()));
 
             return new ResponseEntity<>(savedCamera, HttpStatus.CREATED);
 
@@ -112,7 +112,7 @@ public class AdminController {
     @PostMapping(value ="/sound")
     public ResponseEntity<Sound> addSound(@RequestBody Sound sound) {
         try {
-            Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getSound_brand()));
+            Sound savedSound = soundRepo.save(new Sound(sound.getModel(), sound.getBrand()));
 
             return new ResponseEntity<>(savedSound, HttpStatus.CREATED);
 
@@ -125,7 +125,7 @@ public class AdminController {
     @PostMapping(value ="/light")
     public ResponseEntity<Light> addLight(@RequestBody Light light) {
         try {
-            Light savedLight = lightRepo.save(new Light(light.getModel(), light.getLight_brand()));
+            Light savedLight = lightRepo.save(new Light(light.getModel(), light.getBrand()));
 
             return new ResponseEntity<>(savedLight, HttpStatus.CREATED);
 
@@ -140,7 +140,7 @@ public class AdminController {
     public ResponseEntity<Camera> updateCamera(@PathVariable long id, @RequestBody Camera cameraDetails){
         Camera updatedCamera = cameraRepo.findById(id).orElseThrow(null);
         updatedCamera.setModel(cameraDetails.getModel());
-        updatedCamera.setCamera_brand(cameraDetails.getCamera_brand());
+        updatedCamera.setBrand(cameraDetails.getBrand());
 
         cameraRepo.save(updatedCamera);
 
@@ -151,7 +151,7 @@ public class AdminController {
     public ResponseEntity<Sound> updateSound(@PathVariable long id, @RequestBody Sound soundDetails){
         Sound updatedSound = soundRepo.findById(id).orElseThrow(null);
         updatedSound.setModel(soundDetails.getModel());
-        updatedSound.setSound_brand(soundDetails.getSound_brand());
+        updatedSound.setBrand(soundDetails.getBrand());
 
        soundRepo.save(updatedSound);
 
@@ -162,7 +162,7 @@ public class AdminController {
     public ResponseEntity<Light> updateLight(@PathVariable long id, @RequestBody Light lightDetails){
         Light updatedLight = lightRepo.findById(id).orElseThrow(null);
         updatedLight.setModel(lightDetails.getModel());
-        updatedLight.setLight_brand(lightDetails.getLight_brand());
+        updatedLight.setBrand(lightDetails.getBrand());
 
         lightRepo.save(updatedLight);
 
